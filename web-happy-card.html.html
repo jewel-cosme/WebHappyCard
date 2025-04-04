@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投稿キャンペーン</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background: #f9f9f9;
+        }
+
+        header {
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(135deg, #ffccff, #ccf3ff);
+            color: #333;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        button {
+            padding: 15px 30px;
+            margin: 10px;
+            background: #ffc1e3;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background: #ff99cc;
+            transform: scale(1.05);
+        }
+
+        section {
+            padding: 20px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 700px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #review-section {
+            background: #ccf3ff;
+        }
+
+        #sns-section {
+            background: #ffe4e1;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            font-size: 1em;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #ff99cc;
+            outline: none;
+        }
+
+        .file-input {
+            margin-top: 10px;
+        }
+
+        .radio-group {
+            margin-bottom: 15px;
+        }
+
+        .radio-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 10px;
+        }
+
+        .radio-group label {
+            text-align: center;
+            font-size: 1em;
+            color: #555;
+        }
+
+        .radio-group label input {
+            display: block;
+            margin: 0 auto 5px auto;
+        }
+
+        .section-title {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .sns-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .sns-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2em;
+            color: #555;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .sns-item img {
+            width: 30px;
+            height: 30px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #ffccff;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        button[type="submit"] {
+            display: block;
+            margin: 20px auto; /* ボタンを中央に配置 */
+        }
+
+        #sns-section p {
+            text-align: center; /* テキストを中央揃え */
+            line-height: 1; /* 行間を少し狭める */
+            margin: 4px 0;   /* 上下の余白を狭める */
+        }
+
+         /* ** スマホ対応のためのメディアクエリ ** */
+         @media only screen and (max-width: 768px) {
+            header h1 {
+                font-size: 2em; /* 元々のサイズ */
+            }
+
+            header p {
+                font-size: 1.2em; /* 元々のサイズ */
+            }
+
+            button {
+                padding: 15px 30px; /* 元々のパディング */
+                font-size: 1.2em; /* 元々のサイズ */
+            }
+
+            section {
+                padding: 15px;
+                margin: 10px auto;
+                width: 95%;
+            }
+
+            .input-group, .radio-group {
+                margin-bottom: 10px;
+            }
+
+            input, textarea {
+                padding: 8px;
+                font-size: 1em;
+            }
+
+            .sns-item {
+                font-size: 1em;
+            }
+
+            .sns-item img {
+                width: 25px;
+                height: 25px;
+            }
+
+            footer {
+                font-size: 0.8em;
+                padding: 15px;
+            }
+        }
+
+        /* 画像や動画のレスポンシブ対応 */
+        img, video {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>JEWEL WEB<br>ハッピーカード</h1>
+        <p>商品レビューで毎月8名様に<br>1000円分QUOカードプレゼント！</p>
+        <p>イラスト/写真/動画などの<br>ご応募もお待ちしてます！</p>
+    </header>
+
+    <div class="button-container">
+        <p>①レビューを直接入力<br>②SNS投稿どちらも対象になります！</p>
+        <button onclick="scrollToSection('review-section')">商品レビュー 🌟</button>
+        <button onclick="scrollToSection('sns-section')">SNS投稿 💌</button>
+    </div>
+
+    <section id="review-section">
+        <h2>商品レビュー 🛁</h2>
+        <form id="upload-form" enctype="multipart/form-data">
+            <div class="input-group">
+                <label for="product-name">商品名</label>
+                <input type="text" id="product-name" name="product-name" placeholder="例: 耳洗潔">
+            </div>
+            <div class="input-group">
+                <label for="review">感想</label>
+                <textarea id="review" name="review" rows="5" placeholder="商品の感想を入力してください"></textarea>
+            </div>
+
+            <div class="input-group">
+                <label for="rating">評価</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="rating" value="1">☆</label>
+                    <label><input type="radio" name="rating" value="2">☆☆</label>
+                    <label><input type="radio" name="rating" value="3">☆☆☆</label>
+                    <label><input type="radio" name="rating" value="4">☆☆☆☆</label>
+                    <label><input type="radio" name="rating" value="5">☆☆☆☆☆</label>
+                </div>
+            </div>            
+
+            <div class="input-group">
+                <label for="image-upload">イラストや写真があれば添付してください（30MBまで）</label>
+                <input type="file" id="image-upload" name="file" class="file-input" accept="image/*,video/*">
+                <div id="file-warning" style="color: red; font-weight: bold; display: none; margin-top: 5px;">
+                    容量は30MBまでです。
+            </div>
+            <div class="input-group">
+                <label for="name">氏名</label>
+                <input type="text" id="name" name="name" placeholder="例: 山田 太郎">
+            </div>
+            <div class="input-group">
+                <label for="postal-code">郵便番号（ハイフン無し）</label>
+                <input type="text" id="postal-code" name="postal-code" placeholder="例: 1234567" onblur="fetchAddress()">
+            </div>
+            <div class="input-group">
+                <label for="address">住所</label>
+                <input type="text" id="address" name="address" placeholder="例: 兵庫県神戸市中央区">
+            </div>
+
+                <script>//郵便番号から住所を自動入力
+                    function fetchAddress() {
+                    const postalCode = document.getElementById("postal-code").value;      
+                    const normalizedCode = postalCode.replace(/-/g, '');// ハイフンを除去して7桁に統一
+
+                if (normalizedCode) {
+                    const url = `https://zipcloud.ibsnet.co.jp/api/search?zipcode=${normalizedCode}`;
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                    if (data.results) {
+                        const address = data.results[0].address1 + data.results[0].address2 + data.results[0].address3;
+                        document.getElementById("address").value = address;
+                                    }
+                                });
+                        }
+                    }
+                </script>
+            <div class="input-group">
+                <label for="phone-number">電話番号（ハイフン無し）</label>
+                <input type="text" id="phone-number" name="phone-number" placeholder="例: 09012345678">
+            </div>
+
+            <div class="input-group">
+                <div class="section-title">年齢</div>
+                <div class="radio-group">
+                    <label><input type="radio" name="age-group" value="10代">10代</label>
+                    <label><input type="radio" name="age-group" value="20代">20代</label>
+                    <label><input type="radio" name="age-group" value="30代">30代</label>
+                    <label><input type="radio" name="age-group" value="40代">40代</label>
+                    <label><input type="radio" name="age-group" value="50代">50代</label>
+                    <label><input type="radio" name="age-group" value="60代">60代</label>
+                    <label><input type="radio" name="age-group" value="70代～">70代～</label>
+                    <label><input type="radio" name="age-group" value="答えない">答えない</label>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="section-title">性別</div>
+                <div class="radio-group">
+                    <label><input type="radio" name="gender" value="男性">男性</label>
+                    <label><input type="radio" name="gender" value="女性">女性</label>
+                    <label><input type="radio" name="gender" value="答えない">答えない</label>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="section-title">購入回数</div>
+                <div class="radio-group">
+                    <label><input type="radio" name="purchase-count" value="初めて">初めて</label>
+                    <label><input type="radio" name="purchase-count" value="2回目">2回目</label>
+                    <label><input type="radio" name="purchase-count" value="3回目">3回目</label>
+                    <label><input type="radio" name="purchase-count" value="4回目">4回目</label>
+                    <label><input type="radio" name="purchase-count" value="5回目以上">5回目以上</label>
+                </div>
+            </div>
+            <button type="submit" style="background: #66d9ff; color: white;">送信する 💌</button>
+        </form>
+    </section>
+
+    <section id="sns-section">
+        <h2>SNS投稿 📲</h2>
+        <p>「#JEWEL0001」 を付けて以下のSNSにレビューを投稿！</p>
+        <p>抽選で毎月QUOカード1000円分が当たるチャンス🎁</p>
+        <div class="sns-list">
+            <div class="sns-item">
+                <span>YouTube</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTubeロゴ">
+            </div>
+            <div class="sns-item">
+                <span>Instagram</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagramロゴ">
+            </div>
+            <div class="sns-item">
+                <span>X（旧Twitter）</span>
+                <img src="https://abs.twimg.com/icons/apple-touch-icon-192x192.png" alt="Twitterロゴ" width="30">
+            </div>
+            <p>当選された方には、弊社より<br>DMにてご連絡させていただきます📤</p>
+            <p>ご投稿された内容は弊社サイト等で<br>二次利用させていただく場合がございます！</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Jewel Cosmetics. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // ✅ 先に定義：送信本体
+        async function sendFormData(formData) {
+            try {
+                // ログ出力（デバッグ用）
+                for (let [key, value] of formData.entries()) {
+                    console.log(`${key}:`, value);
+                }
+    
+                const response = await fetch("https://script.google.com/macros/s/AKfycbz3g8sGymql7wQU27qXH1id1Dm7BazKbfQ8jHNkqRF8Fx4w6kFWY5Y_oLzuQqb2Rfuk/exec", {
+                    method: "POST",
+                    body: formData
+                });
+    
+                const result = await response.json();
+                console.log("送信結果:", result);
+    
+                document.body.innerHTML = `<div style="text-align:center; padding: 50px;">
+                    <h2 style="color: #ff99cc;">貴重なご意見をいただきありがとうございます！</h2>
+                    <p style="font-size: 1.2em;">QUOカードの当選は発送をもってかえさせていただきます 🎁</p>
+                </div>`;
+            } catch (error) {
+                alert("送信エラーが発生しました。");
+                console.error("送信エラー:", error);
+            }
+        }
+
+        const MAX_FILE_SIZE = 30 * 1024 * 1024;
+        let fileTooLarge = false;
+
+        // ファイル選択時にサイズチェック＆警告表示
+            document.getElementById("image-upload").addEventListener("change", function () {
+            const file = this.files[0];
+            const warningEl = document.getElementById("file-warning");
+
+            if (file && file.size > MAX_FILE_SIZE) {
+                warningEl.style.display = "block";
+                fileTooLarge = true;
+            } else {
+                warningEl.style.display = "none";
+                fileTooLarge = false;
+            }
+            });
+
+    
+        // ✅ スムーススクロール
+        function scrollToSection(id) {
+            const section = document.getElementById(id);
+            if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    
+        // ✅ フォーム送信処理
+        document.querySelector("form").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            if (fileTooLarge) {
+                alert("添付ファイルの容量を30MB以下にしてください。");
+                return;
+            }
+    
+            const requiredFields = ["product-name", "review", "name", "postal-code", "address", "phone-number"];
+            let isValid = true;
+            let firstErrorField = null;
+    
+            requiredFields.forEach(id => {
+                let field = document.getElementById(id);
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.border = "2px solid red";
+                    if (!firstErrorField) firstErrorField = field;
+                } else {
+                    field.style.border = "";
+                }
+            });
+    
+            if (!document.querySelector('input[name="age-group"]:checked') ||
+                !document.querySelector('input[name="gender"]:checked') ||
+                !document.querySelector('input[name="purchase-count"]:checked')) {
+                isValid = false;
+                alert("未入力の項目があります");
+                return;
+            }
+    
+            if (!isValid) {
+                firstErrorField.scrollIntoView({ behavior: 'smooth' });
+                alert("未入力の項目があります");
+                return;
+            }
+            
+    
+            const formData = new FormData();
+            formData.append("productName", document.getElementById("product-name").value);
+            formData.append("review", document.getElementById("review").value);
+            const rating = document.querySelector('input[name="rating"]:checked');
+            formData.append("rating", rating ? rating.value : "");
+            formData.append("name", document.getElementById("name").value);
+            formData.append("postalCode", document.getElementById("postal-code").value);
+            formData.append("address", document.getElementById("address").value);
+            formData.append("phoneNumber", document.getElementById("phone-number").value);
+            formData.append("ageGroup", document.querySelector('input[name="age-group"]:checked').value);
+            formData.append("gender", document.querySelector('input[name="gender"]:checked').value);
+            formData.append("purchaseCount", document.querySelector('input[name="purchase-count"]:checked').value);
+    
+            const imageFile = document.getElementById("image-upload").files[0];
+    
+            if (imageFile) {
+                const reader = new FileReader();
+                reader.onloadend = async function () {
+                    const base64Image = reader.result.split(',')[1];
+                    formData.append("imageBase64", base64Image);
+                    formData.append("fileName", imageFile.name);
+    
+                    await sendFormData(formData); // 🔄 Base64付きで送信
+                };
+                reader.readAsDataURL(imageFile);
+            } else {
+                await sendFormData(formData); // 🔄 画像なしで送信
+            }
+        });
+    </script>
+    
+</body>
+</html>
