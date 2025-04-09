@@ -394,19 +394,13 @@
         // ✅ 先に定義：送信本体
         async function sendFormData(formData) {
             try {
-                // ログ出力（デバッグ用）
-                for (let [key, value] of formData.entries()) {
-                    console.log(`${key}:`, value);
-                }
-    
                 const response = await fetch("https://script.google.com/macros/s/AKfycbz3g8sGymql7wQU27qXH1id1Dm7BazKbfQ8jHNkqRF8Fx4w6kFWY5Y_oLzuQqb2Rfuk/exec", {
                     method: "POST",
                     body: formData
                 });
     
                 const result = await response.json();
-                console.log("送信結果:", result);
-    
+                
                 document.body.innerHTML = `<div style="text-align:center; padding: 50px;">
                     <h2 style="color: #ff99cc;">貴重なご意見をいただきありがとうございます！</h2>
                     <p style="font-size: 1.2em;">QUOカードの当選は発送をもってかえさせていただきます 🎁</p>
