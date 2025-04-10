@@ -136,6 +136,17 @@
             display: block;
             margin: 0 auto 5px auto;
         }
+          /* 💌 紙飛行機アニメーション */
+        .fly-plane {
+            display: inline-block;
+            animation: fly 0.8s ease-in-out infinite alternate;
+            margin-right: 8px;
+        }
+
+        @keyframes fly {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(10px); }
+        }
 
         .section-title {
             font-size: 1.2em;
@@ -391,6 +402,19 @@
     </footer>
 
     <script>
+         // ✅ ボタンアニメーション表示用関数
+        function showSendingState() {
+            const btn = document.getElementById("submit-button");
+            const span = document.getElementById("plane-icon");
+            btn.disabled = true;
+            span.innerHTML = '<span class="fly-plane">💌</span>送信中...';
+        }
+        function resetButtonState() {
+            const btn = document.getElementById("submit-button");
+            const span = document.getElementById("plane-icon");
+            btn.disabled = false;
+            span.innerHTML = '送信する 💌';
+        }
         // ✅ 先に定義：送信本体
         async function sendFormData(formData) {
             try {
@@ -408,6 +432,7 @@
             } catch (error) {
                 alert("送信エラーが発生しました。");
                 console.error("送信エラー:", error);
+                resetButtonState();
             }
         }
 
@@ -440,7 +465,9 @@
         // ✅ フォーム送信処理
         document.querySelector("form").addEventListener("submit", async function (e) {
             e.preventDefault();
-
+            
+        showSendingState(); // アニメーション表示開始
+            
             if (fileTooLarge) {
                 alert("添付ファイルの容量を30MB以下にしてください。");
                 return;
@@ -466,12 +493,14 @@
                 !document.querySelector('input[name="purchase-count"]:checked')) {
                 isValid = false;
                 alert("未入力の項目があります");
+                resetButtonState();
                 return;
             }
     
             if (!isValid) {
                 firstErrorField.scrollIntoView({ behavior: 'smooth' });
                 alert("未入力の項目があります");
+                resetButtonState();
                 return;
             }
             
