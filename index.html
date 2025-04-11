@@ -123,8 +123,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             gap: 10px;
-            justify-items: start;
-            text-align: left;
         }
 
         .radio-group label {
@@ -136,6 +134,7 @@
             line-height: 1.2;
             color: #555;
             white-space: nowrap; /* ← 改行防止でズレ防止 */
+            width: 100%;
         }
 
         .radio-group label input {
