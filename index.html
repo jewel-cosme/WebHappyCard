@@ -121,13 +121,13 @@
 
         .radio-group {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             gap: 10px;
             justify-items: start;
         }
 
         .radio-group label {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 4px; /* ← 広がりすぎを防止 */
             font-size: 1em;
@@ -137,8 +137,8 @@
         }
 
         .radio-group label input {
-            display: block;
-            margin: 0 auto 5px auto;
+            display: inline-block;
+            margin: 0;
         }
           /* 💌 紙飛行機アニメーション */
         .fly-plane {
