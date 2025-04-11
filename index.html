@@ -128,7 +128,10 @@
         }
 
         .radio-group label {
-            text-align: center;
+            display: inline-flex;   /* ラジオボタンと文字（星）を横並びに */
+            align-items: center;    /* 上下がずれないように中央揃え */
+            gap: 5px;              /* ボタンと星の間に少し余白 */
+            text-align: center;　　/* ラベル内の文字は中央寄せ */
             font-size: 1em;
             color: #555;
             min-width: 0;      /* ← iPhoneでラベル幅が暴走するのを防ぐ */
