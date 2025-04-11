@@ -121,21 +121,19 @@
 
         .radio-group {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
             gap: 10px;
             justify-items: start;
-            width: 100%; /* （iPhone15のズレ対策） */
         }
 
         .radio-group label {
-            display: inline-flex;   /* ラジオボタンと文字（星）を横並びに */
-            align-items: center;    /* 上下がずれないように中央揃え */
-            gap: 5px;              /* ボタンと星の間に少し余白 */
-            text-align: center;　　/* ラベル内の文字は中央寄せ */
+            display: inline-flex;
+            align-items: center;
+            gap: 4px; /* ← 広がりすぎを防止 */
             font-size: 1em;
+            white-space: nowrap; /* ← 改行防止でズレ防止 */
+            line-height: 1;
             color: #555;
-            min-width: 0;      /* ← iPhoneでラベル幅が暴走するのを防ぐ */
-            flex-shrink: 1;    /* ← はみ出しを防いでコンパクトに収まる */
         }
 
         .radio-group label input {
