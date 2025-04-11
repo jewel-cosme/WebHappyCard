@@ -130,6 +130,8 @@
             text-align: center;
             font-size: 1em;
             color: #555;
+            min-width: 0;      /* ← iPhoneでラベル幅が暴走するのを防ぐ */
+            flex-shrink: 1;    /* ← はみ出しを防いでコンパクトに収まる */
         }
 
         .radio-group label input {
