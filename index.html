@@ -130,7 +130,7 @@
             display: flex;
             align-items: flex-start;
             justify-content: flex-start; /* ← 左寄せを確実に！ */
-            gap: 4px; /* ← 広がりすぎを防止 */
+            gap: 2px; /* ← 広がりすぎを防止 */
             font-size: 1em;
             line-height: 1.2;
             color: #555;
@@ -140,8 +140,9 @@
         }
 
         .radio-group label input {
-            display: inline-block;
+            display: inline; 
             margin: 0;
+            vertical-align: middle;   /* ← Safari対策 */
         }
           /* 💌 紙飛行機アニメーション */
         .fly-plane {
