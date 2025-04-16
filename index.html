@@ -128,8 +128,8 @@
         }
 
         .radio-group label {
-            display: flex;
-            align-items: flex-start;
+            display: inline-flex;
+            align-items: center;
             justify-content: flex-start; /* ← 左寄せを確実に！ */
             gap: 2px; /* ← 広がりすぎを防止 */
             font-size: 1em;
@@ -141,7 +141,7 @@
         }
 
         .radio-group label input {
-            display: inline; 
+            display: inline-block; 
             margin: 0;
             vertical-align: middle;   /* ← Safari対策 */
         }
