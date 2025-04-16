@@ -123,7 +123,6 @@
             display: flex;
             flex-wrap: wrap;
             gap: 12px 24px; /* 縦横の余白を指定 */
-            justify-content: flex-start;
         }
 
         .radio-group label {
@@ -133,17 +132,16 @@
             justify-content: flex-start; /* ← 左寄せを確実に！ */
             gap: 2px; /* ← 広がりすぎを防止 */
             font-size: 1em;
-            line-height: 1.2;
+            line-height: 1;
             color: #555;
             white-space: nowrap; /* ← 改行防止でズレ防止 */
-            width: fit-content;
-            text-align: left;
+            padding: 0;
+            margin: 0;
         }
 
         .radio-group label input[type="radio"]{
-            display: inline-block; 
             margin: 0;
-            vertical-align: middle;   /* ← Safari対策 */
+            appearance: auto; /* Safari用の意図しない装飾を抑制 */
         }
           /* 💌 紙飛行機アニメーション */
         .fly-plane {
