@@ -120,11 +120,10 @@
         }
 
         .radio-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(auto-fit,100px));
-            gap: 8px;
-            justify-items: start;
-            justify-content: start;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px; /* 縦横の余白を指定 */
+            justify-content: flex-start;
         }
 
         .radio-group label {
