@@ -146,6 +146,13 @@
             margin: 0;
             vertical-align: middle;   /* ← Safari対策 */
         }
+
+        .radio-group label span {
+            display: inline-block;
+            line-height: 1;
+            margin: 0;
+            padding: 0;
+        }
           /* 💌 紙飛行機アニメーション */
         .fly-plane {
             display: inline-block;
@@ -286,11 +293,11 @@
             <div class="input-group">
                 <label for="rating">評価</label>
                 <div class="radio-group">
-                    <label><input type="radio" name="rating" value="1">☆</label>
-                    <label><input type="radio" name="rating" value="2">☆☆</label>
-                    <label><input type="radio" name="rating" value="3">☆☆☆</label>
-                    <label><input type="radio" name="rating" value="4">☆☆☆☆</label>
-                    <label><input type="radio" name="rating" value="5">☆☆☆☆☆</label>
+                    <label><input type="radio" name="rating" value="1"><span>☆</span></label>
+                    <label><input type="radio" name="rating" value="2"><span>☆☆</span></label>
+                    <label><input type="radio" name="rating" value="3"><span>☆☆☆</span></label>
+                    <label><input type="radio" name="rating" value="4"><span>☆☆☆☆</span></label>
+                    <label><input type="radio" name="rating" value="5"><span>☆☆☆☆☆</span></label>
                 </div>
             </div>            
 
