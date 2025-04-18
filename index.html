@@ -128,11 +128,12 @@
         }
 
         .radio-group label {
-            display: flex;
-            flex-direction: row;
+            display: inline-grid;           /* ラジオ＋テキストを横並びにする */
+            grid-auto-flow: column;
             align-items: center;
             justify-content: flex-start; /* ← 左寄せを確実に！ */
             gap: 2px; /* ← 広がりすぎを防止 */
+            min-width: 100px;
             font-size: 1em;
             line-height: 1;
             color: #555;
