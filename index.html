@@ -380,6 +380,9 @@
             <button type="submit" id="submit-button" style="background: #66d9ff; color: white;">
                 <span id="plane-icon">送信する 💌</span>
             </button>
+            <p id="sending-message" style="display: none; text-align: center; font-size: 0.9em; color: #888;">
+                数秒かかる場合があります…
+            </p>
         </form>
     </section>
 
@@ -414,14 +417,19 @@
         function showSendingState() {
             const btn = document.getElementById("submit-button");
             const span = document.getElementById("plane-icon");
+            const msg = document.getElementById("sending-message");
+            
             btn.disabled = true;
             span.innerHTML = '<span class="fly-plane">💌</span>送信中...';
+            msg.style.display = 'block'; // ← メッセージ表示
         }
         function resetButtonState() {
             const btn = document.getElementById("submit-button");
             const span = document.getElementById("plane-icon");
+            const msg = document.getElementById("sending-message");
             btn.disabled = false;
             span.innerHTML = '送信する 💌';
+            msg.style.display = 'none';
         }
         // ✅ 先に定義：送信本体
         async function sendFormData(formData) {
